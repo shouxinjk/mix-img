@@ -8,7 +8,7 @@
             <div class="layout-nav">
                 <div class="layout-title">
                     <div class="layout-title-line"></div>
-                    <span class="layout-title-content">图片合成配置平台</span>
+                    <span class="layout-title-content">海报设计器</span>
                 </div>
             </div>
         </Menu>
@@ -21,12 +21,12 @@ export default {
 </script>
 <style lang="less" scoped>
 .layout-logo {
-    width: 46px;
-    height: 38px;
+    width:150px;
+    height: 30px;
     float: left;
     position: relative;
     top: 20px;
-    left: 150px;
+    left: 40px;
     background-repeat: no-repeat;
     background-size: contain;
     background-image: url("../../../../../assets/logo.png");

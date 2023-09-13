@@ -6,6 +6,8 @@
  * @Last Modified time: 2021-01-09 16:27:16
  */
 // rollup.config.js
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import {terser} from 'rollup-plugin-terser';
 export default [
@@ -21,7 +23,9 @@ export default [
                 extensions: ['.js'],
                 exclude: 'node_modules/**'
             }),
-            terser()
+            terser(),
+            commonjs(),
+            resolve()
         ],
         watch: {
             include: 'src/**'
@@ -38,7 +42,9 @@ export default [
                 runtimeHelpers: true,
                 extensions: ['.js'],
                 exclude: 'node_modules/**'
-            })
+            }),
+            commonjs(),
+            resolve()
         ],
         watch: {
             include: 'src/**'

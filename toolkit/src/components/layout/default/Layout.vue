@@ -13,39 +13,39 @@
                 <div class="footer-content-more clear">
                     <div class="footer-content-more-title">
                         <Icon type="ios-link"/>
-                        更多资源
+                        More+定制
                     </div>
                     <a
-                        class="footer-content-more-content" href="https://smartprogram.baidu.com/docs/develop/tutorial/intro/"
+                        class="footer-content-more-content" href="https://www.biglistoflittlethings.com"
                         target="_blank" rel="noopener noreferrer"
                     >
-                        <div class="footer-content-more-content-main">百度智能小程序</div>
+                        <div class="footer-content-more-content-main">大规模+个性化</div>
                         <div class="footer-content-more-content-sub"></div>
                     </a>
                     <a
-                        class="footer-content-more-content" href="https://efe.baidu.com/"
+                        class="footer-content-more-content" href="https://www.biglistoflittlethings.com"
                         target="_blank" rel="noopener noreferrer"
                     >
-                        <div class="footer-content-more-content-main">百度EFE（Excellent FrontEnd）技术体系</div>
+                        <div class="footer-content-more-content-main">在线定制平台</div>
                         <div class="footer-content-more-content-sub"></div>
                     </a>
                 </div>
                 <div class="footer-content-more clear">
                     <div class="footer-content-more-title">
                         <Icon type="ios-people"/>
-                        开发团队&招聘
+                        设计师招募&合作
                     </div>
                     <a
-                        class="footer-content-more-content" href="https://talent.baidu.com/external/baidu/index.html#/jobDetail/2/150801"
+                        class="footer-content-more-content" href="https://www.biglistoflittlethings.com"
                         target="_blank" rel="noopener noreferrer"
                     >
-                        <div class="footer-content-more-content-main">百度用户增长研发部</div>
+                        <div class="footer-content-more-content-main">在线设计服务</div>
                     </a>
                 </div>
                 <div class="footer-content-slogan clear">
                     <div class="footer-content-slogan-logo"></div>
-                    <div class="footer-content-slogan-title">图片合成平台</div>
-                    <div class="footer-content-slogan-main">致力于提供方便快捷的图片合成服务</div>
+                    <div class="footer-content-slogan-title">电商级海报服务</div>
+                    <div class="footer-content-slogan-main">在线定制+内容生成+私域运营</div>
                 </div>
             </div>
         </Footer>
@@ -131,8 +131,8 @@ export default {
             // display: flex;
             // flex-direction: column;
             &-logo {
-                width: 105px;
-                height: 86px;
+                width: 300px;
+                height: 60px;
                 background-image: url("../../../assets/logo.png");
                 background-size: 100% 100%;
                 margin-bottom: 11px;
