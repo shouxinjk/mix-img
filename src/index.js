@@ -92,22 +92,25 @@ function getObjectFitSize(
 export const addBackgroundImg = async config => {
     try {
         const {base, ctx} = config;
-        const width = base.width || 300;
-        const height = base.height || 300;
+        const xwidth = base.width || 300; //海报宽度
+        const xheight = base.height || 300; //海报高度
         console.log("process background img", base, ctx);
+        console.log("canvas size:",xwidth,xheight);
         if (base.backgroundImg) {
             const img = await createImg(base.backgroundImg, base.loadingTimeout);
+            console.log("image size:",img.width,img.height);
             //ilife:自适应缩放
-            // ctx.drawImage(img, 0, 0, width, height);
-            let converFilter = getObjectFitSize('cover',width,height,img.width,img.height);
-            console.log("got cover filter", converFilter);
-            const { sx,sy,swidth,sheight,x,y,width,height } = coverFilter;
-            ctx.drawImage(sx,sy,swidth,sheight,x,y,width,height); 
+            // ctx.drawImage(img, 0, 0, xwidth, xheight);
+            let coverFit = getObjectFitSize("cover",xwidth,xheight,img.width,img.height);
+            console.log("got cover fit", coverFit);
+            const { sx,sy,swidth,sheight,x,y,width,height } = coverFit;
+            ctx.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
             //ilife: 自适应缩放
         }
         return config;
     }
     catch (err) {
+        console.log("error add background image.",err);
         return Promise.reject(Object.assign({}, errorMap.ADD_BG_ERROR, {err}));
     }
 };

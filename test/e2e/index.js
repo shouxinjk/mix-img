@@ -23,7 +23,7 @@ const App = san.defineComponent({
         if (res.errno === 0 && res.data.canvas) {
             document.getElementById('show-img-wrap').appendChild(res.data.canvas);
         }
-        console.log('图片合成结束~~', res);
+        console.log('图片合成结束2~~', res);
     }
 });
 

@@ -51,17 +51,69 @@ export const addTextToCanvas = async (ctx, config = {}, replaceText) => {
         } catch (e) {
             console.error('[Font loading failed]', e);
         }
-        // 颜色
-        ctx.fillStyle = config.style?.color;
+        // 文本
+        const text = replaceVariable(config.text, replaceText);
         // 字体
         ctx.font = font;
         // 水平对齐
         ctx.textAlign = config.style?.textAlign ? config.style.textAlign : 'left';
         // 垂直对齐
         ctx.textBaseline = config.style?.textBaseline ? config.style.textBaseline : 'alphabetic';
-        // 文本
-        const text = replaceVariable(config.text, replaceText);
+
+        // ilife: 背景颜色
+        let padding = 5;
+        if(config.style && config.style.bgcolor){
+            console.log("draw bg color", config.style.bgcolor);
+            console.log("measure text", ctx.measureText(text));
+            ctx.fillStyle = config.style.bgcolor;
+            const { width, actualBoundingBoxAscent, actualBoundingBoxDescent, fontBoundingBoxAscent, fontBoundingBoxDescent } = ctx.measureText(text);
+            let height = config.style?.fontSize || 20;
+            console.log("draw bg rect", width, height);
+            //根据文字对齐方式计算起始位置
+            let rectX = config.position?.x || 0;
+            let rectY = config.position?.y || 0;
+            //计算x
+            if( ctx.textAlign === 'center'){
+                rectX = rectX - width/2;
+            }else if( ctx.textAlign === 'right'){
+                rectX = rectX - width;
+            }
+            //计算y
+            if( ctx.textBaseline === 'alphabetic'){ //默认对齐
+                rectY = rectY - fontBoundingBoxAscent +1; //actualBoundingBoxAscent - 2; //(height - actualBoundingBoxDescent); //2px修正
+            }else if( ctx.textBaseline === 'top'){
+                rectY = rectY; 
+            }else if( ctx.textBaseline === 'hanging'){
+                rectY = rectY; 
+            }else if( ctx.textBaseline === 'middle'){
+                rectY = rectY - height/2; 
+            }else if( ctx.textBaseline === 'ideographic'){
+                rectY = rectY - height; 
+            }else if( ctx.textBaseline === 'bottom'){
+                rectY = rectY - height; 
+            }
+
+            ctx.fillRect(rectX - padding, rectY - padding, width + 2*padding, height + 2*padding);
+            // ctx.restore();
+        }
+
+        // 前景颜色
+        ctx.fillStyle = config.style?.color;
+
+        // ilife: 位移
+        if(config.translate){
+            console.log("try translate", config.translate);
+            ctx.translate( config.translate.x ? config.translate.x : 0, config.translate.y ? config.translate.y : 0, );
+        }
+        // ilife: 旋转
+        if(config.rotate){
+            console.log("try rotate", config.rotate);
+            ctx.rotate( config.rotate );
+        }
+        
         ctx.fillText(text, config.position?.x || 0, config.position?.y || 0);
+        // ilife:复位
+        // ctx.restore();
     }
     catch (err) {
         return Promise.reject(Object.assign({}, errorMap.ADD_TEXT_ERROR, {err}));
