@@ -12,7 +12,7 @@ module.exports = {
     // outputDir: 'dist',
     devServer: {
         compress: true,
-        port: 9000,
+        port: 5000,
         // host: 'ug.baidu-int.com',
         host: '0.0.0.0',
         historyApiFallback: true,
